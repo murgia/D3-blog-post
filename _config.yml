@@ -17,8 +17,7 @@ github_username:  murgia
 # Build settings
 markdown: kramdown
 
-highlighter: pygments
-github: [Repository metadata]
+
 safe: true
 lsi: false
 source: your top-level directory
