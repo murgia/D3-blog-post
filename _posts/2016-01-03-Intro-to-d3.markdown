@@ -1,0 +1,90 @@
+---
+layout: post
+title:  "Intro to D3"
+date:   2016-01-03 18:38:15 -0500
+categories: jekyll update
+---
+
+Welcome to my brief tutorial on learning D3!  In this tutorial we will  briefly explain what D3 is and begin learning D3 by building a simple bar chart.
+
+D3 allows you to bind arbitrary data to a Document Object Model (DOM), and then apply data-driven transformations to the document. For example, you can use D3 to generate an HTML table from an array of numbers. Or, use the same data to create an interactive SVG bar chart with smooth transitions and interaction.
+
+To begin we will use the following starter code:
+
+{% highlight ruby %}
+<html>
+  <body>
+    <script src="d3.v3.min.js" charset="utf-8"></script>
+    <script>
+      <!-- code -->
+    </script>
+  </body>
+</html>
+{% endhighlight %}
+
+The data that will be driving our chart will be an array:
+
+{% highlight ruby %}
+var nums = [45, 94, 234, 20, 123, 78];
+{% endhighlight %}
+
+D3 uses Scalable Vector Graphics (SVG), which is an XML format, for drawing. You can think of SVG in a lot of the same terms as the DOM – there are elements with parents and children and attributes, and you can respond to the same mouse/touch events.
+
+In order to select something in D3, we must produce a D3 selection and wrap that in a local variable so we can work with it.
+
+{% highlight ruby %}
+var svg = d3.select('body').append('svg');
+{% endhighlight %}
+
+This SVG element acts as a viewport for all the other elements we'll be adding to it, we also need to set its width and height:
+
+{% highlight ruby %}
+var svg = d3.select('body').append('svg');
+   .attr('width', 200)
+   .attr('height', 200);
+{% endhighlight %}
+
+In order to represent the data in rectangles we need to use the data join. The data join gives us a way to specify exactly what our selections represent. We use it like this:
+
+{% highlight ruby %}
+var nums = [80, 53, 125, 200, 28, 97];
+
+var bars = svg.selectAll('rect')
+  .data(nums);
+{% endhighlight%}
+
+These <rect> elements do not exist in the DOM yet. We access them and and append an actual <rect> element to the DOM like this:
+
+{% highlight ruby %}
+bars.enter().append('rect');
+{% endhighlight%}
+
+We now need to use our data-driven documents to create our bar chart. We want each element to be separated and we will do it like this:
+
+{% highlight ruby %}
+bars.attr('x', function(d, i) {
+  return 30*i;
+});
+{% endhighlight%}
+
+by accessing the values of our element we can manipulate how they are displayed.  In this example we just modified the x paramater of each <rect>.
+
+Now that our <rect> elements are displaying spaced out, we need to get the elements to actually display the height according to their numerical values.  We will do this with another modification.
+
+{% highlight ruby %}
+bars.attr('height', function(d, i) {
+  return d;
+});
+{% endhighlight%}
+
+As you have noticed by now, our chart is upside down!  That is because the origin of the SVG coordinate plane is the top left corner. Since we set the height of our svg element to 200, here's what we need to do:
+
+{% highlight ruby %}
+bars.attr('y', function(d, i) {
+  return 200 - d;
+});
+{% endhighlight%}
+
+Congratulations you have just made a bar chart using D3.  This is just scratching the surface so I definitely recommend further reading on selections.  Understanding selections is central to using D3 and can take some time to wrap your head around.  I highly recommend checking out [Sam Selikoff's Introduction to D3][d3-docs].  It was used as a guideline for this tutorial and is a great learning guide.
+
+[d3-docs]: http://www.samselikoff.com/writings/intro-to-d3/#why-data-vis
