@@ -12,8 +12,13 @@ description: > # this means to ignore newlines until "baseurl:"
   My name is Matthew Murgia and I am a developer that loves to get out of my comfort zone to learn and help others.  I have a background in sustainability and enjoy finding solutions to problems that have the capacity to endure. This is my blog to help explain new concepts for beginners.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://yourdomain.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
+github_username:  murgia
 
 # Build settings
 markdown: kramdown
+
+highlighter: pygments
+github: [Repository metadata]
+safe: true
+lsi: false
+source: your top-level directory
