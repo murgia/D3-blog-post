@@ -20,4 +20,4 @@ markdown: kramdown
 
 safe: true
 lsi: false
-source: d3-blog-post
+source: /Users/Matthew/wdi/homework/d3-blog-post
