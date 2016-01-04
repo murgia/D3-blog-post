@@ -11,9 +11,13 @@ email: matthew.murgia@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   My name is Matthew Murgia and I am a developer that loves to get out of my comfort zone to learn and help others.  I have a background in sustainability and enjoy finding solutions to problems that have the capacity to endure. This is my blog to help explain new concepts for beginners.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://yourdomain.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
+url: "http://murgia.github.io/D3-blog-post/" # the base hostname & protocol for your site
+github_username:  murgia
 
 # Build settings
 markdown: kramdown
+
+
+safe: true
+lsi: false
+source: d3-blog-post
